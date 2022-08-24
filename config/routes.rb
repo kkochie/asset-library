@@ -1,8 +1,17 @@
 Rails.application.routes.draw do
   
-  # route to test your configuration
-  get '/hello', to: 'application#hello_world'
+  resources :profiles
+  resources :assets
+  resources :libraries
+  resources :users
+ 
+  post "/login", to: "sessions#create"
+  delete "/logout", to: "sessions#destroy"
 
+  post "/signup", to: "users#create"
+  get "/me", to: "users#show"
+
+  # Fallback
   get '*path',
       to: 'fallback#index',
       constraints: ->(req) { !req.xhr? && req.format.html? }

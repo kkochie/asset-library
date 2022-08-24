@@ -1,31 +1,31 @@
 <mxfile host="65bd71144e">
     <diagram id="6OUJD8-JtYODZ9EApM0q" name="Page-1">
-        <mxGraphModel dx="1025" dy="922" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+        <mxGraphModel dx="629" dy="589" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
-                <mxCell id="2" value="User&lt;br&gt;has_one :profile&lt;br&gt;has_many :libraries&lt;br&gt;has_many :assets, through: :libraries&lt;br&gt;&lt;br&gt;string :username&lt;br&gt;string :password_digest" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                <mxCell id="2" value="User&lt;br&gt;has_one :profile&lt;br&gt;has_many :libraries&lt;br&gt;has_many :assets, through: :libraries&lt;br&gt;&lt;br&gt;string :username, presence: true, uniqueness:true&lt;br&gt;string :password_digest" style="whiteSpace=wrap;html=1;" parent="1" vertex="1">
                     <mxGeometry x="40" y="160" width="240" height="270" as="geometry"/>
                 </mxCell>
-                <mxCell id="3" value="Library&lt;br&gt;belongs_to :user&lt;br&gt;has_many :assets&lt;br&gt;&lt;br&gt;string :library_name&lt;br&gt;&lt;br&gt;**user_id" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                <mxCell id="3" value="Library&lt;br&gt;belongs_to :user&lt;br&gt;has_many :assets&lt;br&gt;&lt;br&gt;string :library_name, presence: true, uniqueness:true&lt;br&gt;&lt;br&gt;&lt;br&gt;**user_id" style="whiteSpace=wrap;html=1;" parent="1" vertex="1">
                     <mxGeometry x="365" y="160" width="240" height="270" as="geometry"/>
                 </mxCell>
-                <mxCell id="4" value="Asset&lt;br&gt;belongs_to :library&lt;br&gt;&lt;br&gt;string :asset_url&lt;br&gt;string :description&lt;br&gt;string :keywords&lt;br&gt;string :file_type&lt;br&gt;&lt;br&gt;**library_id" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
-                    <mxGeometry x="365" y="480" width="240" height="270" as="geometry"/>
+                <mxCell id="4" value="Asset&lt;br&gt;belongs_to :library&lt;br&gt;&lt;br&gt;string :asset_url, presence: true&lt;br&gt;string :description, presence: true, length: {minimum: 50}&lt;br&gt;string :keywords&lt;br&gt;string :source&lt;br&gt;&lt;br&gt;**library_id" style="whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="335" y="480" width="318" height="270" as="geometry"/>
                 </mxCell>
-                <mxCell id="7" value="" style="edgeStyle=none;html=1;" edge="1" parent="1" source="5" target="2">
+                <mxCell id="7" value="" style="edgeStyle=none;html=1;" parent="1" source="5" target="2" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="5" value="Profile&lt;br&gt;belongs_to :user&lt;br&gt;&lt;br&gt;string :role&lt;br&gt;string :location&lt;br&gt;string :full_name&lt;br&gt;string :avatar_url&lt;br&gt;&lt;br&gt;**user_id" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                <mxCell id="5" value="Profile&lt;br&gt;belongs_to :user&lt;br&gt;&lt;br&gt;string :role, presence: true&lt;br&gt;string :location&lt;br&gt;string :full_name, presence, true&lt;br&gt;string :avatar_url&lt;br&gt;&lt;br&gt;**user_id" style="whiteSpace=wrap;html=1;" parent="1" vertex="1">
                     <mxGeometry x="40" y="479" width="240" height="270" as="geometry"/>
                 </mxCell>
-                <mxCell id="8" value="" style="endArrow=classic;html=1;exitX=0.001;exitY=0.547;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="3">
+                <mxCell id="8" value="" style="endArrow=classic;html=1;exitX=0.001;exitY=0.547;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" source="3" edge="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
                         <mxPoint x="419" y="524" as="sourcePoint"/>
                         <mxPoint x="283" y="308" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="9" value="" style="endArrow=classic;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" target="3">
+                <mxCell id="9" value="" style="endArrow=classic;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" parent="1" target="3" edge="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
                         <mxPoint x="485" y="477" as="sourcePoint"/>
                         <mxPoint x="469" y="474" as="targetPoint"/>
