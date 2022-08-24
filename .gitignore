@@ -27,3 +27,6 @@
 /config/master.key
 
 .DS_Store
+
+#ignore node_modules
+/client/node_modules
