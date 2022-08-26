@@ -1,4 +1,4 @@
 class ProfileSerializer < ActiveModel::Serializer
-  attributes :id, :role, :location, :full_name, :avatar_url
+  attributes :id, :name, :location, :avatar, :bio
   has_one :user
 end

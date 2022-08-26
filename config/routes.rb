@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
   
+  
+  resources :libraries
   resources :profiles
   resources :assets
-  resources :libraries
   resources :users
  
   post "/login", to: "sessions#create"

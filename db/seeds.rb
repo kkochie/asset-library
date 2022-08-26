@@ -1,94 +1,156 @@
 # DELETE existing tables
 Profile.destroy_all
-Asset.destroy_all
 Library.destroy_all
+Asset.destroy_all
 User.destroy_all
 
 
 # CREATE Users
 puts "Seeding users..."
-5.times{ User.create(
-  username: Faker::Internet.username,
-  password_digest: BCrypt::Password.create('Password')
-)}
-
-# CREATE Libraries
-puts "Seeding libraries..."
-Library.create(
-  library_name: Faker::Hipster.word,
-  user_id: 1
+user1 = User.create(
+  username: "emmett",
+  password: "happy"
 )
 
-Library.create(
-  library_name: Faker::Hipster.word,
-  user_id: 2
-)
-
-Library.create(
-  library_name: Faker::Hipster.word,
-  user_id: 3
-)
-
-Library.create(
-  library_name: Faker::Hipster.word,
-  user_id: 4
-)
-
-Library.create(
-  library_name: Faker::Hipster.word,
-  user_id: 5
+user2 = User.create(
+  username: "frida",
+  password: "sweet"
 )
 
 # CREATE Assets
 puts "Seeding assets..."
-20.times{ Asset.create(
-  asset_url: Faker::LoremFlickr.image,
-  description: Faker::Hipster.paragraph,
-  keywords: Faker::Hipster.words,
+asset1 = Asset.create(
+  title: Faker::Hipster.word,
+  caption: Faker::Hipster.paragraph,
   source: Faker::GreekPhilosophers.name,
-  library_id: Faker::Number.between(from: 1, to: 5)
-)}
+  url: Faker::LoremFlickr.image
+)
+
+asset2 = Asset.create(
+  title: Faker::Hipster.word,
+  caption: Faker::Hipster.paragraph,
+  source: Faker::GreekPhilosophers.name,
+  url: Faker::LoremFlickr.image
+)
+
+asset3 = Asset.create(
+  title: Faker::Hipster.word,
+  caption: Faker::Hipster.paragraph,
+  source: Faker::GreekPhilosophers.name,
+  url: Faker::LoremFlickr.image
+)
+
+asset4 = Asset.create(
+  title: Faker::Hipster.word,
+  caption: Faker::Hipster.paragraph,
+  source: Faker::GreekPhilosophers.name,
+  url: Faker::LoremFlickr.image
+)
+
+asset5 = Asset.create(
+  title: Faker::Hipster.word,
+  caption: Faker::Hipster.paragraph,
+  source: Faker::GreekPhilosophers.name,
+  url: Faker::LoremFlickr.image
+)
+
+asset6 = Asset.create(
+  title: Faker::Hipster.word,
+  caption: Faker::Hipster.paragraph,
+  source: Faker::GreekPhilosophers.name,
+  url: Faker::LoremFlickr.image
+)
+
+asset7 = Asset.create(
+  title: Faker::Hipster.word,
+  caption: Faker::Hipster.paragraph,
+  source: Faker::GreekPhilosophers.name,
+  url: Faker::LoremFlickr.image
+)
+
+asset8 = Asset.create(
+  title: Faker::Hipster.word,
+  caption: Faker::Hipster.paragraph,
+  source: Faker::GreekPhilosophers.name,
+  url: Faker::LoremFlickr.image
+)
+
+asset9 = Asset.create(
+  title: Faker::Hipster.word,
+  caption: Faker::Hipster.paragraph,
+  source: Faker::GreekPhilosophers.name,
+  url: Faker::LoremFlickr.image
+)
+
+asset10 = Asset.create(
+  title: Faker::Hipster.word,
+  caption: Faker::Hipster.paragraph,
+  source: Faker::GreekPhilosophers.name,
+  url: Faker::LoremFlickr.image
+)
+
+asset11 = Asset.create(
+  title: Faker::Hipster.word,
+  caption: Faker::Hipster.paragraph,
+  source: Faker::GreekPhilosophers.name,
+  url: Faker::LoremFlickr.image
+)
+
+asset12 = Asset.create(
+  title: Faker::Hipster.word,
+  caption: Faker::Hipster.paragraph,
+  source: Faker::GreekPhilosophers.name,
+  url: Faker::LoremFlickr.image
+)
+
+asset13 = Asset.create(
+  title: Faker::Hipster.word,
+  caption: Faker::Hipster.paragraph,
+  source: Faker::GreekPhilosophers.name,
+  url: Faker::LoremFlickr.image
+)
+
+asset14 = Asset.create(
+  title: Faker::Hipster.word,
+  caption: Faker::Hipster.paragraph,
+  source: Faker::GreekPhilosophers.name,
+  url: Faker::LoremFlickr.image
+)
+
+
+# CREATE Libraries
+puts "Seeding libraries..."
+Library.create(user_id: user1.id, asset_id: asset1.id)
+Library.create(user_id: user1.id, asset_id: asset2.id)
+Library.create(user_id: user1.id, asset_id: asset3.id)
+Library.create(user_id: user1.id, asset_id: asset4.id)
+Library.create(user_id: user1.id, asset_id: asset5.id)
+Library.create(user_id: user1.id, asset_id: asset6.id)
+Library.create(user_id: user1.id, asset_id: asset7.id)
+Library.create(user_id: user2.id, asset_id: asset8.id)
+Library.create(user_id: user2.id, asset_id: asset9.id)
+Library.create(user_id: user2.id, asset_id: asset10.id)
+Library.create(user_id: user2.id, asset_id: asset11.id)
+Library.create(user_id: user2.id, asset_id: asset12.id)
+Library.create(user_id: user2.id, asset_id: asset13.id)
+Library.create(user_id: user2.id, asset_id: asset14.id)
 
 # CREATE Profiles
 puts "Seeding profiles..."
 Profile.create(
-  role: Faker::Job.position,
+  name: Faker::Name.name,
   location: Faker::Address.city,
-  full_name: Faker::Name.name,
-  avatar_url: Faker::Avatar.image,
-  user_id: 1
+  avatar: Faker::Avatar.image,
+  bio: Faker::Hacker.say_something_smart,
+  user_id: user1.id
 )
 
 Profile.create(
-  role: Faker::Job.position,
+  name: Faker::Name.name,
   location: Faker::Address.city,
-  full_name: Faker::Name.name,
-  avatar_url: Faker::Avatar.image,
-  user_id: 2
-)
-
-Profile.create(
-  role: Faker::Job.position,
-  location: Faker::Address.city,
-  full_name: Faker::Name.name,
-  avatar_url: Faker::Avatar.image,
-  user_id: 3
-)
-
-Profile.create(
-  role: Faker::Job.position,
-  location: Faker::Address.city,
-  full_name: Faker::Name.name,
-  avatar_url: Faker::Avatar.image,
-  user_id: 4
-)
-
-Profile.create(
-  role: Faker::Job.position,
-  location: Faker::Address.city,
-  full_name: Faker::Name.name,
-  avatar_url: Faker::Avatar.image,
-  user_id: 5
+  avatar: Faker::Avatar.image,
+  bio: Faker::Hacker.say_something_smart,
+  user_id: user2.id
 )
 
 puts "Done seeding!"

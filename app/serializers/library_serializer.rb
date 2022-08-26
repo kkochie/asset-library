@@ -1,4 +1,5 @@
 class LibrarySerializer < ActiveModel::Serializer
-  attributes :id, :library_name
+  attributes :id
   has_one :user
+  has_one :asset
 end
