@@ -4,15 +4,18 @@ import ReactMarkdown from "react-markdown";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { Box, Button } from "../elements";
+import AssetUpdateForm from "../components/AssetUpdateForm";
 
 export default function Library() {
   const [assets, setAssets] = useState([]);
+  const [showForm, setShowForm] = useState(false);
 
   useEffect(() => {
     fetch("/assets")
       .then((r) => r.json())
       .then(setAssets);
   }, []);
+
 
   function handleDelete(id) {
     fetch(`/assets/${id}`, {
@@ -25,7 +28,11 @@ export default function Library() {
       }
     });
   }
-
+  
+  function handleClick() {
+    setShowForm((showForm) => !showForm);
+  }
+  
   return (
     <Wrapper>
       {assets.length > 0 ? (
@@ -39,7 +46,12 @@ export default function Library() {
               </p>
               <ReactMarkdown>{asset.caption}</ReactMarkdown>
               <Button variant="outline" onClick={() => handleDelete(asset.id)}>Delete</Button>
+              <Button variant="outline" onClick={handleClick}>Update</Button>
+              <div>
+                {showForm ? <AssetUpdateForm asset={assets} setAsset={setAssets} /> : null}
+              </div>
             </Box>
+            
           </Asset>
         ))
       ) : (

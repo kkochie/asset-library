@@ -137,7 +137,7 @@ Library.create(user_id: user2.id, asset_id: asset14.id)
 
 # CREATE Profiles
 puts "Seeding profiles..."
-Profile.create(
+profile1 = Profile.create(
   name: Faker::Name.name,
   location: Faker::Address.city,
   avatar: Faker::Avatar.image,
@@ -145,12 +145,25 @@ Profile.create(
   user_id: user1.id
 )
 
-Profile.create(
+profile1.avatar_up.attach(
+  io: File.open('./public/avatars/fishing.png'),
+  filename: 'fishing.png',
+  content_type: 'application/png'
+)
+
+
+profile2 = Profile.create(
   name: Faker::Name.name,
   location: Faker::Address.city,
   avatar: Faker::Avatar.image,
   bio: Faker::Hacker.say_something_smart,
   user_id: user2.id
 )
+profile2.avatar_up.attach(
+  io: File.open('./public/avatars/music.png'),
+  filename: 'fishing.png',
+  content_type: 'application/png'
+)
+
 
 puts "Done seeding!"

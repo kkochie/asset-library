@@ -7,7 +7,6 @@ import ProfileUpdate from "./ProfileUpdate";
 
 export default function Profile()  {
   const [profile, setProfile] = useState("");
-
   const [errors, setErrors] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [showForm, setShowForm] = useState(false);

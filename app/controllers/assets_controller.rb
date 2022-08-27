@@ -10,6 +10,18 @@ class AssetsController < ApplicationController
     asset = @current_user.assets.create!(asset_params)
     render json: asset, status: :created
   end
+  
+  # PATCH /assets/:id
+  def update
+    byebug
+    asset = find_asset
+    if asset
+      asset.update(asset_params)
+      render json: asset
+    else
+      render json: { error: "Asset not found" }, status: :not_found
+    end
+  end
 
   # DELETE /assets/:id
   def destroy
@@ -22,7 +34,7 @@ class AssetsController < ApplicationController
   private
 
   def asset_params
-    params.permit(:url, :caption, :title, :source)
+    params.permit(:url, :caption, :title, :source, :id)
   end
 
   def find_asset

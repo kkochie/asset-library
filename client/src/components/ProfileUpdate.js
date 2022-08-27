@@ -3,15 +3,13 @@ import { useState } from "react";
 import styled from "styled-components";
 import { Button, Error, FormField, Input, Label, Textarea } from "../elements";
 
-export default function Profile({ profile, setProfile })  {
+export default function ProfileUpdate({ profile, setProfile })  {
   
   const [name, setName] = useState("");
   const [location, setLocation] = useState("");
   const [bio, setBio] = useState("");
   const [avatar, setAvatar] = useState("");
-  const [errors, setErrors] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-
   
   
   // Update profile
@@ -76,11 +74,6 @@ export default function Profile({ profile, setProfile })  {
             <Button color="primary" type="submit">
               {isLoading ? "Loading..." : "Submit Change"}
             </Button>
-          </FormField>
-          <FormField>
-            {errors.map((err) => (
-              <Error key={err}>{err}</Error>
-            ))}
           </FormField>
         </form>
     </div>
