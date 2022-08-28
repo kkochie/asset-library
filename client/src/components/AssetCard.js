@@ -17,12 +17,15 @@ export default function AssetCard({ asset, setAssets, onDelete, handleUpdate }) 
   function handleClick() {
     setShowForm((showForm) => !showForm);
   }
-
+  
+  
   return (
     <Asset key={asset.id}>
       <Box>
-        {/* <img src={asset.url} alt={asset.title}/> */}
-        <img src={asset.image_data} />
+        
+        {asset.url ? <img src={asset.url}/> : <img src={asset.image_data}/>}
+        {/* <img src={asset.url} alt={asset.title}/>
+        <img src={asset.image_data} /> */}
         <p>
           {asset.title} <br />
           <cite>Source: {asset.source}</cite>

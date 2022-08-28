@@ -41,9 +41,10 @@ export default function AssetCreateForm({ user }) {
     <Wrapper>
       <WrapperChild>
         <h2>Create Asset</h2>
+        <p>Submit image by either url or direct upload.</p>
         <form onSubmit={handleSubmit}>
           <FormField>
-            <Label htmlFor="url">Asset URL</Label>
+            <Label htmlFor="url">Image URL</Label>
             <Input
               type="text"
               id="url"
@@ -51,6 +52,7 @@ export default function AssetCreateForm({ user }) {
               onChange={(e) => setUrl(e.target.value)}
             />
           </FormField>
+          <h3>OR</h3>
           <FormField>
             <Input
               type="file"
