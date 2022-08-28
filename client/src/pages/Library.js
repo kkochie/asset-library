@@ -1,14 +1,12 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import ReactMarkdown from "react-markdown";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { Box, Button } from "../elements";
-import AssetUpdateForm from "../components/AssetUpdateForm";
+import { Button } from "../elements";
+import AssetCard from "../components/AssetCard";
 
 export default function Library() {
   const [assets, setAssets] = useState([]);
-  const [showForm, setShowForm] = useState(false);
 
   useEffect(() => {
     fetch("/assets")
@@ -16,43 +14,23 @@ export default function Library() {
       .then(setAssets);
   }, []);
 
+  function onDelete(id) {
+    const updatedArray = assets.filter((asset) => asset.id !== id);
+    setAssets(updatedArray);
+  }
 
-  function handleDelete(id) {
-    fetch(`/assets/${id}`, {
-      method: "DELETE",
-    }).then((r) => {
-      if (r.ok) {
-        setAssets((assets) =>
-        assets.filter((asset) => asset.id !== id)
-       );
-      }
-    });
+  function handleUpdate(updatedAsset) {
+    const updatedAssets = assets.map((asset) =>
+      asset.id === updatedAsset.id ? updatedAsset : asset
+    );
+    setAssets(updatedAssets);
   }
-  
-  function handleClick() {
-    setShowForm((showForm) => !showForm);
-  }
-  
+
   return (
     <Wrapper>
       {assets.length > 0 ? (
         assets.map((asset) => (
-          <Asset key={asset.id}>
-            <Box>
-              <img src={asset.url} alt={asset.title}/>
-              <p>
-                {asset.title} <br />
-                <cite>Source: {asset.source}</cite>
-              </p>
-              <ReactMarkdown>{asset.caption}</ReactMarkdown>
-              <Button variant="outline" onClick={() => handleDelete(asset.id)}>Delete</Button>
-              <Button variant="outline" onClick={handleClick}>Update</Button>
-              <div>
-                {showForm ? <AssetUpdateForm asset={assets} setAsset={setAssets} /> : null}
-              </div>
-            </Box>
-            
-          </Asset>
+          <AssetCard key={`asset-${asset.id}`} asset={asset} setAssets={setAssets} onDelete={onDelete} handleUpdate={handleUpdate}/>
         ))
       ) : (
         <>
@@ -71,12 +49,4 @@ const Wrapper = styled.section`
   margin: 40px auto;
   display: flex;
   flex-flow: row wrap;
-`;
-
-const Asset = styled.div`
-width: 30%;
-min-width: 200px;
-margin: 20px auto;
-display: flex;
-flex-flow: row wrap;
 `;

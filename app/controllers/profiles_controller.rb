@@ -5,6 +5,12 @@ class ProfilesController < ApplicationController
     render json: @current_user.profile
   end
 
+  # CREATE /profiles
+  def create
+    profile = Profile.create!(profile_params)
+    render json: profile, status: :created
+  end
+
   # PATCH /profiles/:id
   def update
       profile = Profile.find_by(id: params[:id])
@@ -21,7 +27,7 @@ class ProfilesController < ApplicationController
   private
 
   def profile_params
-		params.permit(:name, :avatar, :bio, :location)
+		params.permit(:name, :avatar, :bio, :location, :user_id)
 	end
 
 end

@@ -3,7 +3,7 @@ import { useState } from "react";
 import styled from "styled-components";
 import { Button, Error, FormField, Input, Label, Textarea } from "../elements";
 
-export default function AssetUpdateForm({ asset, setAsset })  {
+export default function AssetUpdateForm({ asset, handleUpdate, handleClick })  {
   const[caption, setCaption] = useState("");
   const[source, setSource] = useState("");
   const[title, setTitle] = useState("");
@@ -26,7 +26,8 @@ export default function AssetUpdateForm({ asset, setAsset })  {
       }),
     })
     .then((resp) => resp.json())
-    .then((data) => setAsset(data));
+    .then(handleUpdate);
+    handleClick();
 }
 
   return (

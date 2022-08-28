@@ -2,11 +2,11 @@ import React from "react";
 import styled from "styled-components";
 import Profile from "../components/Profile";
 
-export default function User() {
+export default function User( handleClick ) {
 
   return (
     <Wrapper>
-      <Profile />
+      <Profile handleClick={handleClick}/>
     </Wrapper>
   )
 
@@ -15,3 +15,4 @@ export default function User() {
 const Wrapper = styled.section`
   max-width: 800px;
   margin: 40px auto;`
+  

@@ -1,9 +1,8 @@
 import React from "react";
 import { useState } from "react";
-import styled from "styled-components";
-import { Button, Error, FormField, Input, Label, Textarea } from "../elements";
+import { Button, FormField, Textarea } from "../elements";
 
-export default function ProfileUpdate({ profile, setProfile })  {
+export default function ProfileUpdate({ profile, setProfile, handleClick })  {
   
   const [name, setName] = useState("");
   const [location, setLocation] = useState("");
@@ -27,6 +26,7 @@ export default function ProfileUpdate({ profile, setProfile })  {
     }) 
         .then((resp) => resp.json())
         .then((data) => setProfile(data));
+        handleClick();
   }
 
   return (

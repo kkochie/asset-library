@@ -4,6 +4,7 @@ import NavBar from "./components/NavBar";
 import Login from "./pages/Login";
 import AssetCreateForm from "./components/AssetCreateForm";
 import User from "./pages/User";
+import ProfileCreateForm from "./components/ProfileCreateForm";
 import Library from "./pages/Library";
 
 export default function App() {
@@ -30,6 +31,9 @@ export default function App() {
           </Route>
           <Route path="/new">
             <AssetCreateForm user={user} />
+          </Route>
+          <Route path="/new-profile">
+            <ProfileCreateForm user={user} />
           </Route>
           <Route path="/user">
             <User />

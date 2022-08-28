@@ -7,6 +7,7 @@ import ProfileUpdate from "./ProfileUpdate";
 
 export default function Profile()  {
   const [profile, setProfile] = useState("");
+
   const [errors, setErrors] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [showForm, setShowForm] = useState(false);
@@ -21,20 +22,28 @@ export default function Profile()  {
     setShowForm((showForm) => !showForm);
   }
 
+
   return (
     <Wrapper>
-      <WrapperChild>
-        <img src={profile.avatar} alt="User Avatar"/>
-        <h2>{profile.name}</h2>
-        <h3>Location: {profile.location}</h3>
-        <p>{profile.bio}</p>
-        <br />
-        <Button variant="outline" as={Link} to="/libraries">Library</Button>
-        <Button variant="outline" onClick={handleClick}>Update Bio</Button>
-      </WrapperChild>
-      <WrapperChild>
-        {showForm ? <ProfileUpdate profile={profile} setProfile={setProfile} /> : null}
-      </WrapperChild>
+      {profile !== null ? ( 
+          <WrapperChild>
+            <img src={profile.avatar} alt="User Avatar"/>
+            <h2>{profile.name}</h2>
+            <h3>Location: {profile.location}</h3>
+            <p>{profile.bio}</p>
+            <br />
+            <Button variant="outline" as={Link} to="/libraries">Library</Button>
+            <Button variant="outline" onClick={handleClick}>Update Bio</Button>
+            {showForm ? <ProfileUpdate profile={profile} setProfile={setProfile} handleClick={handleClick} /> : null}
+          </WrapperChild>
+        ) : (
+        <>
+          <h2>No Profile Found</h2>
+          <Button as={Link} to="/new-profile">
+            Create Your Profile
+          </Button>
+        </>
+      )}
     </Wrapper>
   );
 }

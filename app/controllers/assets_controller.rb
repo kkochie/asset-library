@@ -13,7 +13,6 @@ class AssetsController < ApplicationController
   
   # PATCH /assets/:id
   def update
-    byebug
     asset = find_asset
     if asset
       asset.update(asset_params)
