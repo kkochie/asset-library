@@ -21,7 +21,8 @@ export default function AssetCard({ asset, setAssets, onDelete, handleUpdate }) 
   return (
     <Asset key={asset.id}>
       <Box>
-        <img src={asset.url} alt={asset.title}/>
+        {/* <img src={asset.url} alt={asset.title}/> */}
+        <img src={asset.image_data} />
         <p>
           {asset.title} <br />
           <cite>Source: {asset.source}</cite>

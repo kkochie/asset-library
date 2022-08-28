@@ -33,7 +33,7 @@ class AssetsController < ApplicationController
   private
 
   def asset_params
-    params.permit(:url, :caption, :title, :source, :id)
+    params.permit(:url, :caption, :title, :source, :id, :image_data)
   end
 
   def find_asset

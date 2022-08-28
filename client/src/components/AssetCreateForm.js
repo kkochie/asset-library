@@ -12,23 +12,21 @@ export default function AssetCreateForm({ user }) {
   const [errors, setErrors] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const history = useHistory();
+  const [imageData, setImageData] = useState(null)
 
 
   function handleSubmit(e) {
     e.preventDefault();
     setIsLoading(true);
-    const formData = {
-      url: url,
-      caption: caption,
-      title: title,
-      source: source
-    }
+    const formData = new FormData()
+    formData.append('caption', caption)
+    formData.append('title', title)
+    formData.append('source', source)
+    formData.append('image_data', imageData)
+ 
     fetch("/assets", {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(formData),
+      body: formData,
       }).then((r) => {
       setIsLoading(false);
       if (r.ok) {
@@ -51,6 +49,13 @@ export default function AssetCreateForm({ user }) {
               id="url"
               value={url}
               onChange={(e) => setUrl(e.target.value)}
+            />
+          </FormField>
+          <FormField>
+            <Input
+              type="file"
+              accept="image/*"
+              onChange={(e) => setImageData(e.target.files[0])}
             />
           </FormField>
           <FormField>
