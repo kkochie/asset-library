@@ -82,9 +82,11 @@ export default function ProfileCreateForm({ user }) {
             />
           </FormField>
           <FormField>
-            <Button color="primary" type="submit">
+            <div>
+              <Button color="primary" type="submit">
               {isLoading ? "Loading..." : "Submit"}
             </Button>
+            </div>
           </FormField>
           <FormField>
             {errors.map((err) => (
@@ -98,7 +100,7 @@ export default function ProfileCreateForm({ user }) {
 }
 
 const Wrapper = styled.section`
-  max-width: 600px;
+  max-width: 400px;
   margin: 40px auto;
   padding: 16px;
   display: flex;

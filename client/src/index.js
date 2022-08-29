@@ -16,8 +16,11 @@ const GlobalStyle = createGlobalStyle`
   }
 
   body {
-    font-family: BlinkMacSystemFont,-apple-system,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Fira Sans","Droid Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-family: 'Rubik', sans-serif;
+    font-weight: 400;
+    padding: 30px;
   }
+  
 `;
 
 ReactDOM.render(

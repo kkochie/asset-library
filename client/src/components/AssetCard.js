@@ -22,30 +22,28 @@ export default function AssetCard({ asset, setAssets, onDelete, handleUpdate }) 
   return (
     <Asset key={asset.id}>
       <Box>
-        
-        {asset.url ? <img src={asset.url}/> : <img src={asset.image_data}/>}
-        {/* <img src={asset.url} alt={asset.title}/>
-        <img src={asset.image_data} /> */}
-        <p>
-          {asset.title} <br />
-          <cite>Source: {asset.source}</cite>
-        </p>
-        <p>{asset.caption}</p>
-        <Button variant="outline" onClick={() => handleDelete(asset.id)}>Delete</Button>
-        <Button variant="outline" onClick={() => handleClick(asset.id)}>Update</Button>
-        <div>
-          {showForm ? <AssetUpdateForm asset={asset} setAsset={setAssets} handleUpdate={handleUpdate} handleClick={handleClick}/> : null}
-        </div>
+          {asset.url ? <img src={asset.url} alt={asset.title}/> : <img src={asset.image_data} alt={asset.title}/>}
+          <p>
+            <span>{asset.title}</span><br />
+            <cite>Source: {asset.source}</cite>
+          </p> 
+          <p>{asset.caption}</p>
+      
+          <div className="update-button">
+            <Button variant="outline" onClick={() => handleDelete(asset.id)}>Delete</Button>
+            <Button variant="outline" onClick={() => handleClick(asset.id)}>Update</Button>
+          </div>
+          {showForm ? <AssetUpdateForm asset={asset} setAsset={setAssets} handleUpdate={handleUpdate} handleClick={handleClick}/> : null}  
       </Box>
-            
     </Asset>
   );
 }
 
 const Asset = styled.div`
-width: 30%;
 min-width: 200px;
 margin: 20px auto;
 display: flex;
 flex-flow: row wrap;
+gap: 40px
+overflow-x: auto;
 `;

@@ -10,14 +10,12 @@ export default function AssetCreateForm({ user }) {
   const [title, setTitle] = useState("");
   const [source, setSource] = useState("");
   const [errors, setErrors] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
   const history = useHistory();
   const [imageData, setImageData] = useState(null)
 
 
   function handleSubmit(e) {
     e.preventDefault();
-    setIsLoading(true);
     const formData = new FormData()
     formData.append('caption', caption)
     formData.append('title', title)
@@ -28,7 +26,6 @@ export default function AssetCreateForm({ user }) {
       method: "POST",
       body: formData,
       }).then((r) => {
-      setIsLoading(false);
       if (r.ok) {
         history.push("/libraries");
       } else {
@@ -52,19 +49,20 @@ export default function AssetCreateForm({ user }) {
               onChange={(e) => setUrl(e.target.value)}
             />
           </FormField>
+          <Upload>
           <h3>OR</h3>
-          <FormField>
-            <Input
+            <input
               type="file"
               accept="image/*"
               onChange={(e) => setImageData(e.target.files[0])}
             />
-          </FormField>
+          </Upload>
           <FormField>
             <Label htmlFor="title">Title</Label>
             <Input
               type="text"
               id="title"
+              placeholder="Required"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
             />
@@ -74,6 +72,7 @@ export default function AssetCreateForm({ user }) {
             <Textarea
               id="caption"
               rows="3"
+              placeholder="Required"
               value={caption}
               onChange={(e) => setCaption(e.target.value)}
             />
@@ -83,14 +82,18 @@ export default function AssetCreateForm({ user }) {
             <Input
               type="text"
               id="source"
+              placeholder="Required"
               value={source}
               onChange={(e) => setSource(e.target.value)}
             />
           </FormField>
           <FormField>
-            <Button color="primary" type="submit">
-              {isLoading ? "Loading..." : "Submit Asset"}
+            <div>
+              <Button color="primary" type="submit">
+              Submit Asset
             </Button>
+            </div>
+           
           </FormField>
           <FormField>
             {errors.map((err) => (
@@ -113,3 +116,11 @@ const Wrapper = styled.section`
 const WrapperChild = styled.div`
   flex: 1;
 `;
+
+const Upload = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 10px;
+`

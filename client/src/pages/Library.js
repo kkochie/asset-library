@@ -33,12 +33,13 @@ export default function Library() {
           <AssetCard key={`asset-${asset.id}`} asset={asset} setAssets={setAssets} onDelete={onDelete} handleUpdate={handleUpdate}/>
         ))
       ) : (
-        <>
+        <div className="no-asset">
           <h2>No Assets Found</h2>
+          <br />
           <Button as={Link} to="/new">
             Upload a New Asset
           </Button>
-        </>
+        </div>
       )}
     </Wrapper>
   );
@@ -49,4 +50,11 @@ const Wrapper = styled.section`
   margin: 40px auto;
   display: flex;
   flex-flow: row wrap;
+  align-items: flex-start;
+
+  div.no-asset {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+  }
 `;

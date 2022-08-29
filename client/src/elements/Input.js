@@ -10,6 +10,7 @@ const Input = styled.input`
   font-size: 1rem;
   line-height: 1.5;
   padding: 4px;
+  font-family: "Courier New", monospace;
 `;
 
 export default Input;
