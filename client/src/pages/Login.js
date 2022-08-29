@@ -10,6 +10,7 @@ export default function Login({ onLogin }) {
 
   return (
     <Wrapper>
+      <img src={`./images/rainbow.jpeg`} alt="Rainbow" />
       <Logo>Image Library</Logo>
       {showLogin ? (
         <>
@@ -50,6 +51,12 @@ const Wrapper = styled.section`
   max-width: 400px;
   margin: 40px auto;
   padding: 16px;
+
+  img {
+    border-radius: 10px;
+    width: 370px;
+    margin-bottom: 15px;
+  }
 `;
 
 const Divider = styled.hr`

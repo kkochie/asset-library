@@ -73,6 +73,11 @@ const Wrapper = styled.section`
       max-width: 200px;
     }
   }
+
+  img {
+    max-height: 300px;
+    padding: 20px 30px;
+  }
   
   div.update-button {
     display:flex;
@@ -85,6 +90,5 @@ const Wrapper = styled.section`
     display:flex;
     align-items: center;
     width: 50%;
-  
   }
 `;

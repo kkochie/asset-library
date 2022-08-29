@@ -5,7 +5,7 @@ import styled from "styled-components";
 import { Button, Error, FormField, Input, Label, Textarea } from "../elements";
 
 export default function AssetCreateForm({ user }) {
-  const [url, setUrl] = useState("");
+  // const [url, setUrl] = useState("");
   const [caption, setCaption] = useState("");
   const [title, setTitle] = useState("");
   const [source, setSource] = useState("");
@@ -38,9 +38,9 @@ export default function AssetCreateForm({ user }) {
     <Wrapper>
       <WrapperChild>
         <h2>Create Asset</h2>
-        <p>Submit image by either url or direct upload.</p>
+        <p>Upload an image file.</p>
         <form onSubmit={handleSubmit}>
-          <FormField>
+          {/* <FormField>
             <Label htmlFor="url">Image URL</Label>
             <Input
               type="text"
@@ -48,9 +48,8 @@ export default function AssetCreateForm({ user }) {
               value={url}
               onChange={(e) => setUrl(e.target.value)}
             />
-          </FormField>
+          </FormField> */}
           <Upload>
-          <h3>OR</h3>
             <input
               type="file"
               accept="image/*"
@@ -122,5 +121,5 @@ const Upload = styled.div`
   flex-direction: row;
   align-items: center;
   gap: 20px;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 `
