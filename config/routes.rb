@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
   
   
-  resources :libraries
-  resources :profiles
+  resources :libraries, only: :index
+  resources :profiles, only: [:index, :create, :update]
   resources :assets
-  resources :users
+  resources :users, only: [:show, :create]
  
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
