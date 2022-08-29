@@ -10,7 +10,7 @@ export default function Login({ onLogin }) {
 
   return (
     <Wrapper>
-      <Logo>Asset Library</Logo>
+      <Logo>Image Library</Logo>
       {showLogin ? (
         <>
           <LoginForm onLogin={onLogin} />
@@ -39,14 +39,15 @@ export default function Login({ onLogin }) {
 }
 
 const Logo = styled.h1`
-  font-family: "Permanent Marker", cursive;
-  font-size: 3rem;
-  color: deeppink;
+  font-family: 'Rubik Mono One', sans-serif;
+  color: #254441;
+  font-size: 2.75rem;
+  line-height: 1;
   margin: 8px 0 16px;
 `;
 
 const Wrapper = styled.section`
-  max-width: 500px;
+  max-width: 400px;
   margin: 40px auto;
   padding: 16px;
 `;

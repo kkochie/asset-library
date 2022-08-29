@@ -7,9 +7,6 @@ import ProfileUpdate from "./ProfileUpdate";
 
 export default function Profile()  {
   const [profile, setProfile] = useState("");
-
-  const [errors, setErrors] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
   const [showForm, setShowForm] = useState(false);
   
   useEffect(() => {
@@ -26,37 +23,68 @@ export default function Profile()  {
   return (
     <Wrapper>
       {profile !== null ? ( 
-          <WrapperChild>
-            <img src={profile.avatar} alt="User Avatar"/>
+        <>
+          <img src={profile.avatar} alt="User Avatar"/>
+          <div>
+            
             <h2>{profile.name}</h2>
             <h3>Location: {profile.location}</h3>
             <p>{profile.bio}</p>
             <br />
-            <Button variant="outline" as={Link} to="/libraries">Library</Button>
-            <Button variant="outline" onClick={handleClick}>Update Bio</Button>
-            {showForm ? <ProfileUpdate profile={profile} setProfile={setProfile} handleClick={handleClick} /> : null}
-          </WrapperChild>
+              <div className="update-button">
+                <Button variant="outline" onClick={handleClick}>Update Bio</Button>
+              </div>
+              {showForm ? <ProfileUpdate profile={profile} setProfile={setProfile} handleClick={handleClick} /> : null}
+          </div>
+        </>
+          
         ) : (
-        <>
+        <div className="no-profile">
           <h2>No Profile Found</h2>
           <Button as={Link} to="/new-profile">
             Create Your Profile
           </Button>
-        </>
+        </div>
       )}
     </Wrapper>
   );
 }
 
-const Wrapper = styled.section`
-  max-width: 1000px;
+const Wrapper = styled.section`  
+  max-width: 800px;
   margin: 40px auto;
   padding: 16px;
   display: flex;
-  flex-direction: column;
-  gap: 24px;
-`;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
 
-const WrapperChild = styled.div`
-  flex: 1;
+  button,
+  textarea {
+    width: 70%;
+  }
+
+  div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 400px;
+    img {
+      max-width: 200px;
+    }
+  }
+  
+  div.update-button {
+    display:flex;
+    align-items: flex-start;
+    margin-bottom: 20px;
+    gap: 10px;
+  }
+
+  div.no-profile {
+    display:flex;
+    align-items: center;
+    width: 50%;
+  
+  }
 `;

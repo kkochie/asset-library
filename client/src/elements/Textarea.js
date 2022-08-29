@@ -8,6 +8,7 @@ const Textarea = styled.textarea`
   max-width: 100%;
   width: 100%;
   font-size: 1rem;
+  font-family: "Courier New", monospace;
   line-height: 1.5;
   padding: 4px;
   resize: none;

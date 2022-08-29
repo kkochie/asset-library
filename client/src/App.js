@@ -38,6 +38,9 @@ export default function App() {
           <Route path="/user">
             <User />
           </Route>
+          <Route exact path="/">
+            <Library />
+          </Route>
         </Switch>
       </main>
     </>

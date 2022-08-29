@@ -1,14 +1,11 @@
 import React from "react";
 import { useState } from "react";
-import styled from "styled-components";
-import { Button, Error, FormField, Input, Label, Textarea } from "../elements";
+import { Button, FormField, Input, Label, Textarea } from "../elements";
 
 export default function AssetUpdateForm({ asset, handleUpdate, handleClick })  {
   const[caption, setCaption] = useState("");
   const[source, setSource] = useState("");
   const[title, setTitle] = useState("");
-  const [errors, setErrors] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
 
   // Update profile
   function handleSubmit(e) {
@@ -32,13 +29,13 @@ export default function AssetUpdateForm({ asset, handleUpdate, handleClick })  {
 
   return (
     <div>
-        
         <form onSubmit={handleSubmit}>
         <FormField>
             <Label htmlFor="title">Update Title</Label>
             <Input
               type="text"
               id="title"
+              placeholder="Required"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
             />
@@ -48,6 +45,7 @@ export default function AssetUpdateForm({ asset, handleUpdate, handleClick })  {
             <Input
               type="text"
               id="source"
+              placeholder="Required"
               value={source}
               onChange={(e) => setSource(e.target.value)}
             />
@@ -57,23 +55,17 @@ export default function AssetUpdateForm({ asset, handleUpdate, handleClick })  {
             <Textarea
               id="caption"
               rows="3"
-              placeholder="Update caption"
+              placeholder="Required"
               value={caption}
               onChange={(e) => setCaption(e.target.value)}
             />
           </FormField>
           <FormField>
-            <Button color="primary" type="submit">
-              {isLoading ? "Loading..." : "Submit Change"}
-            </Button>
-          </FormField>
-          <FormField>
-            {errors.map((err) => (
-              <Error key={err}>{err}</Error>
-            ))}
+              <Button color="primary" type="submit">
+                Submit
+              </Button>
           </FormField>
         </form>
     </div>
   );
 }
-

@@ -15,7 +15,7 @@ export default function NavBar({ user, setUser }) {
   return (
     <Wrapper>
       <Logo>
-        <Link to="/">Library</Link>
+        <Link to="/">Image Library</Link>
       </Logo>
       <Nav>
         <Button as={Link} to="/new">
@@ -37,17 +37,18 @@ export default function NavBar({ user, setUser }) {
 
 const Wrapper = styled.header`
   display: flex;
-  justify-content: center;
+  justify-content: flex-between;
   align-items: center;
   padding: 8px;
 `;
 
 const Logo = styled.h1`
-  font-family: "Permanent Marker", sans-serif;
-  font-size: 3rem;
-  color: deeppink;
+  font-family: 'Rubik Mono One', sans-serif;
+  color: #254441;
+  font-size: 2.75rem;
   margin: 0;
   line-height: 1;
+  
 
   a {
     color: inherit;
@@ -57,7 +58,7 @@ const Logo = styled.h1`
 
 const Nav = styled.nav`
   display: flex;
-  gap: 4px;
+  gap: 10px;
   position: absolute;
-  right: 8px;
+  right: 30px;
 `;
